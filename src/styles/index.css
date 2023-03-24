@@ -1,0 +1,96 @@
+/* SWIPER STYLE */
+.swiper{
+  z-index: 0 !important;
+}
+.swiper-button-next::after{
+  font-size: 28px !important;
+  color: #fff !important;
+  transition: 150ms ease-in-out;
+  padding: 14px 20px !important;
+  border-radius: 9999px;
+  margin-right: 7rem !important;
+}
+.swiper-button-next:hover::after{
+  background: rgba(255, 255, 255, 0.2);
+}
+.swiper-button-prev::after {
+  font-size: 28px !important;
+  color: #fff !important;
+  transition: 150ms ease-in-out;
+  padding: 14px 20px !important;
+  border-radius: 9999px;
+  margin-left: 7rem !important;
+}
+.swiper-button-prev:hover::after{
+  background: rgba(255, 255, 255, 0.2);
+}
+.swiper-button-next:hover{
+  font-weight: bold;
+}
+.swiper-button-prev:hover{
+  font-weight: bold;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal,.swiper-pagination-custom, .swiper-pagination-fraction{
+  bottom: 100px !important;
+}
+.swiper-pagination-bullet{
+  padding: 5px;
+  border: none;
+  border-radius: 999px;
+  background-color: transparent;
+  opacity: 1;
+  border: 2px solid #fff;
+}
+.swiper-pagination-bullet-active{
+  padding: 7px;
+  border: none;
+  border-radius: 999px;
+  background-color: #fff;
+  color: #fff;
+}
+
+@media screen and (max-width: 650px) {
+  .swiper-pagination-bullet{
+    padding: 3px;
+    border: none;
+    border-radius: 999px;
+    background-color: transparent;
+    opacity: 1;
+    border: 2px solid #fff;
+  }
+  .swiper-pagination-bullet-active{
+    padding: 5px;
+    border: none;
+    border-radius: 999px;
+    background-color: #fff;
+    color: #fff;
+  }
+  .swiper-button-next::after{
+    font-size: 20px !important;
+    color: #fff !important;
+    transition: 150ms ease-in-out;
+    padding: 14px 20px !important;
+    border-radius: 9999px;
+    margin-right: 3rem !important;
+  }
+  .swiper-button-prev::after {
+    font-size: 20px !important;
+    color: #fff !important;
+    transition: 150ms ease-in-out;
+    padding: 14px 20px !important;
+    border-radius: 9999px;
+    margin-left: 3rem !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  .swiper-button-next::after{
+    display: none;
+  }
+  .swiper-button-prev::after {
+    display: none;
+  }
+  .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal,.swiper-pagination-custom, .swiper-pagination-fraction{
+    bottom: 50px !important;
+  }
+}
