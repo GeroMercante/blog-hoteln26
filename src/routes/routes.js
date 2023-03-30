@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ScrollToTop, Footer, Navbar } from "../components";
+import { getNovedades } from "../firebase/firebaseFunctions";
 import {
   Error404,
   Admin,
@@ -14,12 +15,25 @@ import {
   Registro,
   Novedades,
 } from "../pages";
-import { LOGIN } from "../redux/types";
+import {
+  LOGIN,
+  REFRESH_PUBLICACIONES,
+  REFRESH_PUBLICACIONES_FAIL,
+} from "../redux/types";
 import GlobalStyles from "../styles/GlobalStyles";
 import AdminRoute from "./AdminRoute";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
+  const [novedades, setNovedades] = useState([]);
+
+  useEffect(() => {
+    async function fetchNovedades() {
+      const novedadesData = await getNovedades();
+      setNovedades(novedadesData);
+    }
+    fetchNovedades();
+  }, []);
 
   useEffect(() => {
     const storedAuth = JSON.parse(localStorage.getItem("auth"));
@@ -30,6 +44,16 @@ const AppRoutes = () => {
       });
     }
   }, [dispatch]);
+
+  const novedadesHabilitadas = novedades.filter(
+    (novedad) => novedad.habilitado
+  );
+
+  if (novedadesHabilitadas.length > 0) {
+    dispatch({ type: REFRESH_PUBLICACIONES });
+  } else {
+    dispatch({ type: REFRESH_PUBLICACIONES_FAIL });
+  }
 
   return (
     <>

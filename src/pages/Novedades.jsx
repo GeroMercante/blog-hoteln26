@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getNovedades } from "../firebase/firebaseFunctions";
+import { BiMessageError } from "react-icons/bi";
 
 const Novedades = () => {
   const [novedades, setNovedades] = useState([]);
@@ -13,24 +15,42 @@ const Novedades = () => {
     fetchNovedades();
   }, []);
 
-  console.log(novedades);
+  const novedadesHabilitadas = novedades.filter(
+    (novedad) => novedad.habilitado
+  );
 
   return (
-    <Container>
-      {novedades.map((novedad) => (
-        <div key={novedad.id} className="novedad">
-          <div className="banner">
-            <h3>{novedad.titulo}</h3>
-            <img src={novedad.imageURL} alt="" />
-            <p className="paragraph">{novedad.fecha}...</p>
-            <Category category={novedad.categoria}>
-              {novedad.categoria}
-            </Category>
-          </div>
-          <p className="description">{novedad.descripcion}</p>
-        </div>
-      ))}
-    </Container>
+    <>
+      <Container>
+        {novedadesHabilitadas.length > 0 ? (
+          novedadesHabilitadas.map((novedad) => (
+            <div key={novedad.id} className="novedad">
+              <div className="banner">
+                <h3>{novedad.titulo}</h3>
+                <img src={novedad.imageURL} alt="" />
+                <p className="paragraph">{novedad.fecha}...</p>
+                <Category category={novedad.categoria}>
+                  {novedad.categoria}
+                </Category>
+              </div>
+              <p className="description">{novedad.descripcion}</p>
+            </div>
+          ))
+        ) : (
+          <NotAvailable>
+            <div>
+              <div className="not-available">
+                <BiMessageError />
+              </div>
+              <h3>Lo sentimos, no hay publicaciones recientes</h3>
+              <Link to="/" className="btn-not">
+                Volver al inicio
+              </Link>
+            </div>
+          </NotAvailable>
+        )}
+      </Container>
+    </>
   );
 };
 
@@ -108,6 +128,58 @@ const Category = styled.p`
   height: fit-content;
   border-radius: 5px;
   margin: 5px;
+`;
+
+const NotAvailable = styled.div`
+  width: 100vw;
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .not-available {
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background: #cd9746;
+    transition: 0.3s;
+    font-weight: bold;
+    width: fit-content;
+    border-radius: 50%;
+    padding: 17px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    svg {
+      margin-top: 2px;
+      padding-top: 2px;
+    }
+  }
+  h3 {
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+  .btn-not {
+    cursor: pointer;
+    color: #fff;
+    font-family: "Playfair Display";
+    background: #cd9746;
+    font-size: 20px;
+    padding: 7px 25px;
+    border-radius: 24px;
+    letter-spacing: 1.3px;
+    transition: 0.3s;
+    font-weight: bold;
+    :hover {
+      color: #cd9746;
+      background-color: #fff;
+      border: 1px solid #cd9746;
+    }
+  }
 `;
 
 export default Novedades;

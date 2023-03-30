@@ -12,6 +12,7 @@ import { saveItem } from "../../../firebase/firebaseFunctions";
 import styled from "styled-components";
 import Loader from "./utils/Loader";
 import { MdCloudUpload, MdDelete } from "react-icons/md";
+import { actions } from "../../../store";
 
 const CreadorComponent = () => {
   const [title, setTitle] = useState("");
@@ -20,6 +21,9 @@ const CreadorComponent = () => {
   const [category, setCategory] = useState("");
   const [imageAsset, setImageAsset] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [habilitado, setHabilitado] = useState(false);
+
+  console.log(habilitado);
 
   const uploadImage = (e) => {
     setIsLoading(true);
@@ -80,12 +84,15 @@ const CreadorComponent = () => {
           categoria: category,
           descripcion: description,
           fecha: fecha,
+          habilitado: habilitado,
         };
-        saveItem(data);
-        console.log(data);
-        setIsLoading(false);
-        toast.success("Creado con éxito 😊!");
-        clearData();
+        saveItem(data)
+        .then(() => {
+          actions.novedades.refreshPublicaciones();
+          setIsLoading(false);
+          toast.success("Creado con éxito 😊!");
+          clearData();
+        })
       }
     } catch (error) {
       console.log(error);
@@ -100,6 +107,7 @@ const CreadorComponent = () => {
     setCategory("");
     setFecha("");
     setDescription("");
+    setHabilitado(false);
   };
 
   return (
@@ -133,6 +141,23 @@ const CreadorComponent = () => {
                   {item.name}
                 </option>
               ))}
+          </select>
+        </div>
+        <div className="container-categories">
+          <select
+            className="input-categorias"
+            placeholder="Habilitado"
+            onChange={(e) => setHabilitado(e.target.value === "true")}
+          >
+            <option value="other" className="option-c">
+              Habilitar novedad
+            </option>
+            <option className="option-categoria" value="true">
+              Verdadero
+            </option>
+            <option className="option-categoria" value="false">
+              Falso
+            </option>
           </select>
         </div>
         <div className="container-upload">
@@ -214,7 +239,7 @@ const Container = styled.div`
 
 const FormBox = styled.div`
   width: 950px;
-  height: 700px;
+  height: 760px;
   background: rgba(10, 250, 50, 0.2);
   padding: 10px 20px;
   border-radius: 16px;
@@ -223,7 +248,7 @@ const FormBox = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  margin-top: 2rem;
+  margin-top: 3rem;
 
   .input-contain-full {
     width: 95%;

@@ -8,7 +8,7 @@ const Admin = () => {
   const user = useSelector((state) => state.auth.user);
   const userName = user && user.displayName;
   const [creator, setCreator] = useState(false);
-  const [dataInfo, setDataInfo] = useState(false);
+  const [dataInfo, setDataInfo] = useState(true);
 
   const handleCreator = (e) => {
     e.preventDefault();
@@ -29,8 +29,8 @@ const Admin = () => {
           Perfil Administrador de <span>{userName}</span>
         </h3>
         <div className="input-contain">
-          <h3 onClick={handleCreator}>Crear publicación</h3>
           <h3 onClick={handleData}>Mis publicaciones</h3>
+          <h3 onClick={handleCreator}>Crear publicación</h3>
           <Link to="/login">Volver al login</Link>
         </div>
         <div className="container">

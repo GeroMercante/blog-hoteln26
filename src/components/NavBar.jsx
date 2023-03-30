@@ -17,6 +17,7 @@ import OWl from "../assets/utils/OB2l.svg";
 
 import { HiBars3 } from "react-icons/hi2";
 import { db } from "../firebase/firebase.config";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   .ola-border {
@@ -296,16 +297,24 @@ const Container = styled.div`
 `;
 
 const NavBar = () => {
+  const novedades = useSelector(state => state.novedades);
+  const [isNovedades, setIsNovedades] = useState(novedades);
   const [verNovedades, setVerNovedades] = useState(false);
   const [responsiveNav, setResponsiveNav] = useState(false);
 
   useEffect(() => {
     const novedadesRef = db.collection("novedades");
-    novedadesRef.get().then((querySnapshot) => {
-      setVerNovedades(!querySnapshot.empty);
-    });
-    console.log(novedadesRef);
-  }, []);
+    setIsNovedades(novedades);
+    novedadesRef
+      .where("habilitado", "==", true)
+      .get()
+      .then((querySnapshot) => {
+        setVerNovedades(!querySnapshot.empty);
+      })
+      .catch((error) => {
+        console.error("Error getting documents: ", error);
+      });
+  }, [novedades]);
 
   const [navbar, setNavbar] = useState(false);
   const location = useLocation();
@@ -388,7 +397,7 @@ const NavBar = () => {
                         src={OWl1}
                         alt="ola w"
                         className="ola-border"
-                        style={{ width: "178px", objectFit: "cover" }}
+                        style={{ width: "108px", objectFit: "cover" }}
                       />
                     ) : (
                       ""
@@ -550,7 +559,7 @@ const NavBar = () => {
                       src={OWl1}
                       alt="ola w"
                       className="ola-border"
-                      style={{ width: "178px", objectFit: "cover" }}
+                      style={{ width: "118px", objectFit: "cover" }}
                     />
                   ) : (
                     ""

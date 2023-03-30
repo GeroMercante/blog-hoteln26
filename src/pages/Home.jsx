@@ -256,7 +256,7 @@ const Servicios = styled.div`
     height: 120vh;
   }
   @media screen and (max-width: 650px) {
-    height: 150vh;
+    height: 140vh;
   }
   .svg-ola-left {
     position: absolute;
@@ -337,6 +337,7 @@ const Servicios = styled.div`
       }
     }
     @media screen and (max-width: 650px) {
+      margin-top: 0rem;
       gap: 0rem;
     }
   }
