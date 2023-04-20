@@ -8,10 +8,16 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import { motion } from "framer-motion";
 import { IoIosArrowForward } from "react-icons/io";
-import imgh1 from "../assets/home/slide01.jpg";
-import imgh2 from "../assets/home/slide02.jpg";
+
+import imgh1 from "../assets/home/mdq.png";
+import imgh2 from "../assets/home/habitacion.png";
+import imgh3 from "../assets/home/desayuno.png";
+import imgh4 from "../assets/home/patio.png";
+import imgh5 from "../assets/home/recepcion.png";
+
 import OG from "../assets/utils/OG.svg";
 import OW from "../assets/utils/OW.svg";
+
 import Icon1 from "../assets/icon/Icono_1.svg";
 import Icon2 from "../assets/icon/Icono_2.svg";
 import Icon3 from "../assets/icon/Icono_3.svg";
@@ -20,6 +26,7 @@ import Icon5 from "../assets/icon/Icono_5.svg";
 import Icon6 from "../assets/icon/Icono_6.svg";
 import Icon7 from "../assets/icon/Icono_7.svg";
 import OB from "../assets/utils/OB.svg";
+
 import FormData from "../components/FormData";
 
 const Home = () => {
@@ -49,7 +56,7 @@ const Home = () => {
             <Box>
               <div className="text-contain">
                 <div className="text">
-                  <h1>A metros del mar</h1>
+                  <h1>Texto de ejemplo</h1>
                 </div>
                 <div className="img-contain">
                   <img src={OW} alt="" />
@@ -69,7 +76,70 @@ const Home = () => {
             <Box>
               <div className="text-contain-2">
                 <div className="text">
-                  <h1>Habitación dobles</h1>
+                  <h1>Habitaciones confortables</h1>
+                </div>
+                <div className="img-contain">
+                  <img src={OW} alt="" />
+                </div>
+                <div>
+                  <button
+                    className="btn-reservas"
+                    onClick={() => cambiarEstadoModal(!estadoModal)}
+                  >
+                    Reservar
+                  </button>
+                </div>
+              </div>
+            </Box>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Box>
+              <div className="text-contain-3">
+                <div className="text">
+                  <h1>Desayuno continental</h1>
+                </div>
+                <div className="img-contain">
+                  <img src={OW} alt="" />
+                </div>
+                <div>
+                  <button
+                    className="btn-reservas"
+                    onClick={() => cambiarEstadoModal(!estadoModal)}
+                  >
+                    Reservar
+                  </button>
+                </div>
+              </div>
+            </Box>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Box>
+              <div className="text-contain-4">
+                <div className="text">
+                  <h1>Patio interno</h1>
+                </div>
+                <div className="img-contain">
+                  <img src={OW} alt="" />
+                </div>
+                <div>
+                  <button
+                    className="btn-reservas"
+                    onClick={() => cambiarEstadoModal(!estadoModal)}
+                  >
+                    Reservar
+                  </button>
+                </div>
+              </div>
+            </Box>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Box>
+              <div className="text-contain-5">
+                <div className="text">
+                  <h1>Atención personalizada</h1>
                 </div>
                 <div className="img-contain">
                   <img src={OW} alt="" />
@@ -150,6 +220,7 @@ const Container = styled(motion.div)`
   left: 0;
   right: 0;
 `;
+
 const Box = styled(motion.div)`
   height: 101vh;
   width: 100%;
@@ -197,14 +268,18 @@ const Box = styled(motion.div)`
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: url(${imgh1});
+    background-image: url(${imgh1});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
     padding-top: 8rem;
     h1 {
       font-size: 90px;
       font-weight: 900;
       color: #fff;
-      font-family: "Playfair Display";
+      font-family: "Cunia", sans-serif;
+      font-style: italic;
       @media screen and (max-width: 650px) {
         font-size: 50px;
         width: 300px;
@@ -220,14 +295,102 @@ const Box = styled(motion.div)`
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: url(${imgh2});
+    background-image: url(${imgh2});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
     padding-top: 8rem;
     h1 {
       font-size: 90px;
       font-weight: 900;
       color: #fff;
-      font-family: "Playfair Display";
+      font-family: "Cunia", sans-serif;
+      font-style: italic;
+      @media screen and (max-width: 650px) {
+        font-size: 50px;
+        width: 300px;
+      }
+    }
+  }
+
+  .text-contain-3 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url(${imgh3});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 8rem;
+    h1 {
+      font-size: 90px;
+      font-weight: 900;
+      color: #fff;
+      font-family: "Cunia", sans-serif;
+      font-style: italic;
+      @media screen and (max-width: 650px) {
+        font-size: 50px;
+        width: 300px;
+      }
+    }
+  }
+
+  .text-contain-4 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url(${imgh4});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 8rem;
+    h1 {
+      font-size: 90px;
+      font-weight: 900;
+      color: #fff;
+      font-family: "Cunia", sans-serif;
+      font-style: italic;
+      @media screen and (max-width: 650px) {
+        font-size: 50px;
+        width: 300px;
+      }
+    }
+  }
+
+  .text-contain-5 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url(${imgh5});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 8rem;
+    h1 {
+      font-size: 90px;
+      font-weight: 900;
+      color: #fff;
+      font-family: "Cunia", sans-serif;
+      font-style: italic;
       @media screen and (max-width: 650px) {
         font-size: 50px;
         width: 300px;
@@ -235,6 +398,7 @@ const Box = styled(motion.div)`
     }
   }
 `;
+
 const Acomodo = styled.div`
   width: 100vw;
   height: 93vh;

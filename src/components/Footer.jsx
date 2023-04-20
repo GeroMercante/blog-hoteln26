@@ -108,7 +108,7 @@ const Footer = () => {
               </div>
               <div className="flex-contain">
                 <h3>Teléfono </h3>
-                <h3 className="italic">(+54) 2345-2222</h3>
+                <h3 className="italic">(+54) 2234-491720</h3>
               </div>
             </div>
           </Box>

@@ -14,6 +14,9 @@ export const doblesImages = [
   require('./images/dobles/04.jpg'),
   require('./images/dobles/05.jpg'),
   require('./images/dobles/06.jpg'),
+  require('./images/dobles/07.jpg'),
+  require('./images/dobles/08.jpg'),
+  require('./images/dobles/09.jpg'),
 ];
 
 export const tripleImages = [
@@ -23,6 +26,7 @@ export const tripleImages = [
   require('./images/triples/04.jpg'),
   require('./images/triples/05.jpg'),
   require('./images/triples/06.jpg'),
+  require('./images/triples/07.jpg'),
 ];
 
 export const cuadruImages = [

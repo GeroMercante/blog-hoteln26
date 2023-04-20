@@ -12,7 +12,6 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-
     .tags{
       width: 100%;
       display: flex;
@@ -32,17 +31,24 @@
       .image{
         width: 100%;
         transition: 150ms;
+        width: 313px;
+        height: 215px;
+        object-fit: cover;
         cursor: pointer;
         &:hover{
           transform: scale(1.05);
         }
       }
     }
-    @media screen and (max-width: 740px) {
-      grid-template-columns: repeat(2,1fr);
+    @media screen and (max-width: 1520px) {
+      grid-template-columns: repeat(3,1fr);
     }
-    @media screen and (max-width: 500px) {
-      grid-template-columns: repeat(1,1fr);
+    @media screen and (max-width: 1129px) {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
   }
 }
@@ -119,6 +125,10 @@
   align-items: center;
   font-size: 1.5em;
   cursor: pointer;
+  @media screen and (max-width: 740px) {
+    padding: 5px;
+    font-size: 1.4em;
+  }
 }
 
 .btn-prev-overlay{
@@ -135,7 +145,10 @@
   border: 3px solid #cd9746;
 
   @media screen and (max-width: 740px) {
-    display: none;
+    position: absolute;
+    left: 5%;
+    bottom: 20%;
+    padding: 5px;
   }
 }
 
@@ -152,6 +165,9 @@
   color: #cd9746;
   border: 3px solid #cd9746;
   @media screen and (max-width: 740px) {
-    display: none;
+    position: absolute;
+    right: 5%;
+    bottom: 20%;
+    padding: 5px;
   }
 }

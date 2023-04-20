@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import Header from "../assets/home/slide01.jpg";
+import Header from "../assets/home/mdq.png";
+import OlasGold from "../assets/utils/OG.svg";
+import PruebaIma from "../assets/galeria/05.jpg";
+import OB from "../assets/utils/OB2l.svg";
+
 import { TbMail } from "react-icons/tb";
 import { IoLocationSharp } from "react-icons/io5";
 import { BsTelephoneFill } from "react-icons/bs";
-import OlasGold from "../assets/utils/OG.svg";
-import PruebaIma from "../assets/galeria/5.jpg";
-import OB from "../assets/utils/OB2l.svg";
 import { MdDone } from "react-icons/md";
+import { IoIosArrowForward } from "react-icons/io";
+
+import Mailsvg from "../assets/utils/email.svg";
 
 const Box = styled(motion.section)`
   position: relative;
@@ -20,6 +24,34 @@ const Box = styled(motion.section)`
   justify-content: center;
   align-items: center;
   height: auto;
+
+  .btn-service {
+    margin-top: 18px;
+    font-size: 17px;
+    font-weight: 300;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    background: transparent;
+    border: 2px solid #a59e94;
+    padding: 9px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    :hover {
+      color: #fff;
+      border: #cd9746;
+      background: #cd9746;
+    }
+    @media screen and (max-width: 650px) {
+      position: relative;
+      font-size: 16px;
+      bottom: -2rem;
+      margin-top: 0;
+    }
+  }
 
   .header-image {
     height: 35vh;
@@ -59,7 +91,7 @@ const Box = styled(motion.section)`
   }
   .flex-box {
     width: 70%;
-    height: 110vh;
+    height: 115vh;
     display: flex;
     align-items: flex-start;
     .grid-2 {
@@ -79,7 +111,7 @@ const Box = styled(motion.section)`
         h2 {
           font-weight: 100;
           font-size: 40px;
-          font-family: "Playfair Display";
+          font-family: "Poppins" sans-serif;
           margin-bottom: 1rem;
         }
         .data {
@@ -87,10 +119,35 @@ const Box = styled(motion.section)`
           margin-top: 1rem;
           justify-content: center;
           align-items: center;
-          gap: 1rem;
+          gap: 9px;
+          .mail-log {
+            width: 38px;
+            height: 38px;
+            position: relative;
+            left: -5px;
+          }
+          .op-text{
+            position: relative;
+            left: -5px;
+          }
+          .data-text-j {
+            color: #a6a6a4;
+            width: 371px;
+            font-size: 17px;
+            span {
+              color: #000;
+            }
+          }
+          .location-relative {
+            position: relative;
+            top: -10px;
+            left: -5px;
+            font-size: 32px;
+          }
           svg {
-            color: green;
+            color: #67b066;
             font-size: 25px;
+            position: relative;
           }
           h3 {
             font-size: 20px;
@@ -117,7 +174,7 @@ const Box = styled(motion.section)`
         .form-title {
           font-weight: 100;
           font-size: 40px;
-          font-family: "Playfair Display";
+          font-family: "Poppins" sans-serif;
           @media screen and (max-width: 650px) {
             font-size: 30px;
           }
@@ -191,7 +248,7 @@ const Box = styled(motion.section)`
       background: #cd9746;
       color: #fff;
       position: absolute;
-      bottom: 150px;
+      bottom: 330px;
       left: 0;
       padding: 8px 43px;
       cursor: pointer;
@@ -240,6 +297,7 @@ const Box = styled(motion.section)`
 
   .ola-right {
     position: absolute;
+    z-index: -2;
     top: 20%;
     width: 550px;
     height: 300px;
@@ -250,7 +308,8 @@ const Box = styled(motion.section)`
   }
   .ola-left {
     position: absolute;
-    bottom: -50px;
+    z-index: -2;
+    bottom: -170px;
     width: 550px;
     height: 300px;
     left: -200px;
@@ -280,6 +339,7 @@ const OkMsg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   .container-modal-done {
     width: 100%;
     height: 100%;
@@ -302,7 +362,7 @@ const OkMsg = styled.div`
       }
     }
     h1 {
-      font-family: "Playfair Display";
+      font-family: "Poppins" sans-serif;
       color: #000;
       font-size: 74px;
       line-height: 74px;
@@ -386,8 +446,8 @@ const Contacto = () => {
             <div className="data-contact">
               <h2>Hotel N26</h2>
               <div className="data">
-                <IoLocationSharp />
-                <h3>
+                <IoLocationSharp className="location-relative" />
+                <h3 className="op-text">
                   <span>Güemes 3041</span> entre las calles <br />
                   Alvarado y Avellaneda
                 </h3>
@@ -395,17 +455,36 @@ const Contacto = () => {
               <div className="data">
                 <BsTelephoneFill />
                 <h3>
-                  <span>(+ 54) 2345-222222</span>
+                  <span>(+ 54) 2234-491720</span>
                 </h3>
               </div>
               <div className="data">
-                <TbMail />
+                <img src={Mailsvg} alt="mail" className="mail-log" />
                 <h3>
-                  <span>
+                  <span className="op-text">
                     <a href="mailto:info@hoteln26.com">info@hoteln26.com</a>
                   </span>
                 </h3>
               </div>
+              <div className="data">
+                <h3 className="data-text-j">
+                  <span>
+                    <a href="mailto:info@hoteln26.com">
+                      Si queres ser parte de nuestro equipo <br />
+                    </a>
+                  </span>
+                  de trabajo envianos tu CV a nuestro mail. En el asunto
+                  contanos al puesto que te queres postular.
+                </h3>
+              </div>
+              <a href="mailto:info@hoteln26.com">
+                <motion.button
+                  className="btn-service"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  Trabajá con nosotros <IoIosArrowForward />
+                </motion.button>
+              </a>
               <img src={PruebaIma} alt="foto galeria" className="img-finish" />
             </div>
             <div className="data-form">

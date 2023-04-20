@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { login, logout } from "../redux/actions/login";
+import BgMDQ from "../assets/utils/mdq-mar.jpg";
+
+import { motion } from "framer-motion";
 
 const Login = () => {
   const user = useSelector((state) => state.auth.user);
@@ -42,15 +45,20 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Login</button>
+                <motion.button type="submit" whileTap={{ scale: 0.8 }}>
+                  Iniciar sesión
+                </motion.button>
                 <div className="line"></div>
               </form>
+              <p className="redirect">
+                ¿No tienes una cuenta? <Link to="/registro">Registrarse</Link>
+              </p>
             </>
           )}
           {user && (
             <>
               <div className="user-login">
-                <h3>Has iniciado sesión</h3>
+                <h3>Sesión iniciada con éxito</h3>
                 {isAdmin && (
                   <Link to="/admin" className="btn-admin">
                     Perfil Administrador
@@ -62,18 +70,6 @@ const Login = () => {
               </div>
             </>
           )}
-          <p className="redirect">
-            ¿No tienes una cuenta?{" "}
-            <Link
-              to="/registro"
-              style={{
-                color: "blue",
-                borderBottom: "2px solid blue",
-              }}
-            >
-              Registrarse
-            </Link>
-          </p>
         </div>
       </Container>
     </>
@@ -82,11 +78,15 @@ const Login = () => {
 
 const Container = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  background-image: url(${BgMDQ});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   .user-login {
     width: 100%;
@@ -100,6 +100,15 @@ const Container = styled.div`
   .redirect {
     position: absolute;
     bottom: 10px;
+    color: #fff;
+    font-size: 22px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 2px #000;
+    a {
+      color: #67b066;
+      border-bottom: 3px solid #67b066;
+    }
   }
 
   .btn-admin {
@@ -113,9 +122,10 @@ const Container = styled.div`
     outline: none;
     text-align: center;
     cursor: pointer;
-    background: rgba(165, 158, 148, 0.7);
+    background: #67b066;
+    backdrop-filter: blur(16px);
     :hover {
-      background: rgba(165, 158, 148, 0.2);
+      background: #4a8c48;
     }
   }
 
@@ -142,7 +152,8 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(165, 158, 148, 0.7);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(16px);
     border-radius: 16px;
     position: relative;
     padding: 11px 27px;
@@ -177,15 +188,17 @@ const Container = styled.div`
         width: 100%;
         font-size: 21px;
         padding: 11px 4px;
-        border: 2px solid #dcdcdc;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(1px);
+        outline: none;
+        border: none;
         border-radius: 8px;
-        outline: 1px solid #777777;
         :focus {
           outline: 2px solid #777777;
         }
       }
       button {
-        background: #296df4;
+        background: #67b066;
         color: #fff;
         width: 100%;
         font-size: 21px;
@@ -195,6 +208,10 @@ const Container = styled.div`
         border: none;
         outline: none;
         cursor: pointer;
+        transition: 0.5s;
+        :hover {
+          background: #4a8c48;
+        }
       }
 
       .line {

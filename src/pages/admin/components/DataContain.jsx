@@ -27,7 +27,6 @@ function DataContain() {
       const novedadRef = db.collection("novedades").doc(novedadId);
       await novedadRef.delete();
       setNovedades(novedades.filter((n) => n.id !== novedadId));
-      console.log("Novedad eliminada con éxito.");
       toast.success("Articulo eliminado con éxito");
       actions.novedades.refreshPublicaciones();
     } catch (error) {
@@ -47,7 +46,6 @@ function DataContain() {
           n.id === novedadId ? { ...n, habilitado: newValue } : n
         )
       );
-      console.log("Habilitado actualizado con éxito.");
       toast.success("Visibilidad actualizada con éxito.");
       actions.novedades.refreshPublicaciones();
     } catch (error) {

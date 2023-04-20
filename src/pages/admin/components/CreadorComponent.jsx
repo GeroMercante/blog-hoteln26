@@ -23,7 +23,6 @@ const CreadorComponent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [habilitado, setHabilitado] = useState(false);
 
-  console.log(habilitado);
 
   const uploadImage = (e) => {
     setIsLoading(true);
@@ -38,7 +37,6 @@ const CreadorComponent = () => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       },
       (error) => {
-        console.log(error);
         toast.error("Error al subir imagen: intenta de nuevo 🙇‍♀️!");
         setTimeout(() => {
           setIsLoading(false);
@@ -95,7 +93,6 @@ const CreadorComponent = () => {
         })
       }
     } catch (error) {
-      console.log(error);
       toast.error("Error al subir cambios, intenta de nuevo 🙇‍♀️!");
     }
   };

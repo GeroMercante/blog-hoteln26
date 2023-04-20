@@ -31,8 +31,6 @@ export const registerWithEmail = ({ displayName, email, password }) => {
               },
             });
             toast.success("Has creado tu cuenta. Inicia sesión.");
-          } else {
-            console.log("No such document!");
           }
         });
       })

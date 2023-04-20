@@ -1,13 +1,18 @@
 import { createGlobalStyle } from "styled-components";
-import '@fontsource/poppins';
-import '@fontsource/playfair-display';
-// font-family: "Playfair Display";
+import "@fontsource/poppins";
+import Cunia from "../assets/fonts/Cunia.ttf";
+
 const GlobalStyles = createGlobalStyle`
     *,*::before,*::after{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         scroll-behavior: smooth;
+    }
+
+    @font-face {
+      font-family: 'Cunia', sans-serif;
+      src: url(${Cunia});
     }
 
     body{
@@ -35,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
     li{
       list-style: none;
     }
-    
+
     button{
       border: none;
       outline: none;

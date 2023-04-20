@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
 import Logo from "../assets/log/n26.png";
 import OWl1 from "../assets/utils/OW-1line.svg";
 
 import {
-  AiOutlineLinkedin,
+  // AiOutlineLinkedin,
   AiOutlineFacebook,
   AiOutlineInstagram,
   AiOutlineClose,
@@ -475,7 +474,7 @@ const NavBar = () => {
               </span>
               <span>
                 <i>
-                  <a href="tel:">(+54) 2345-222222</a>
+                  <a href="tel:">(+54) 2234-491720</a>
                 </i>
               </span>
             </section>
@@ -498,11 +497,11 @@ const NavBar = () => {
                   <AiOutlineInstagram />
                 </a>
               </span>
-              <span>
+              {/* <span>
                 <a href="https://linkedin.com" target="_blank" rel="noreferrer">
                   <AiOutlineLinkedin />
                 </a>
-              </span>
+              </span> */}
             </section>
           </div>
         </header>

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { IoCloseOutline } from "react-icons/io5";
-import Header from "../assets/home/slide01.jpg";
+import Header from "../assets/home/mdq.png";
 import OlasGold from "../assets/utils/OG.svg";
-import PruebaIma from "../assets/galeria/5.jpg";
+import PruebaIma from "../assets/galeria/07.jpg";
 import OB from "../assets/utils/OB2l.svg";
 import FormData from "../components/FormData";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -90,7 +90,8 @@ const Box = styled(motion.div)`
     .title-qs {
       h3 {
         font-size: 40px;
-        font-family: "Playfair Display";
+        font-family: "Poppins", sans-serif;
+        font-style: italic;
         font-weight: 100;
       }
       p {
@@ -152,7 +153,8 @@ const Box = styled(motion.div)`
       h2 {
         color: #cd9746;
         font-size: 44px;
-        font-family: "Playfair Display";
+        font-family: "Poppins", sans-serif;
+        font-style: italic;
         margin-bottom: 1.7rem;
         font-weight: 100;
       }
@@ -295,7 +297,8 @@ const ModalReserva = styled.div`
 
   h3 {
     font-size: 25px;
-    font-family: "Playfair Display";
+    font-family: "Poppins", sans-serif;
+    font-style: italic;
     text-align: center;
     font-weight: 100;
     span {

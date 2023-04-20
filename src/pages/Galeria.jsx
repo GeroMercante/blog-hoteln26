@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from "react";
-import "./GaleriaStyle.scss";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 import { IoCloseOutline } from "react-icons/io5";
-import img1 from "../assets/galeria/1.jpg";
-import img2 from "../assets/galeria/2.jpg";
-import img3 from "../assets/galeria/3.jpg";
-import img4 from "../assets/galeria/4.jpg";
-import img5 from "../assets/galeria/5.jpg";
-import img6 from "../assets/galeria/6.jpg";
-import img7 from "../assets/galeria/7.jpg";
-import img8 from "../assets/galeria/8.jpg";
-import img9 from "../assets/galeria/9.jpg";
-import img10 from "../assets/galeria/10.jpg";
-import img11 from "../assets/galeria/11.jpg";
-import img12 from "../assets/galeria/12.jpg";
 import { MdNavigateBefore, MdNavigateNext, MdClose } from "react-icons/md";
-import styled from "styled-components";
 import FormData from "../components/FormData";
+import imagenes from "../assets/galeria";
+import "./GaleriaStyle.scss";
 
 const images = [
-  { id: "1", imageName: img1, tag: "habitaciones" },
-  { id: "2", imageName: img2, tag: "habitaciones" },
-  { id: "3", imageName: img3, tag: "habitaciones" },
-  { id: "4", imageName: img4, tag: "habitaciones" },
-  { id: "5", imageName: img5, tag: "exteriores" },
-  { id: "6", imageName: img6, tag: "exteriores" },
-  { id: "7", imageName: img7, tag: "exteriores" },
-  { id: "8", imageName: img8, tag: "exteriores" },
-  { id: "9", imageName: img9, tag: "servicios" },
-  { id: "10", imageName: img10, tag: "servicios" },
-  { id: "11", imageName: img11, tag: "servicios" },
-  { id: "12", imageName: img12, tag: "servicios" },
+  { id: "1", imageName: imagenes.img1, tag: "espacios comunes" },
+  { id: "2", imageName: imagenes.img2, tag: "espacios comunes" },
+  { id: "3", imageName: imagenes.img3, tag: "espacios comunes" },
+  { id: "4", imageName: imagenes.img4, tag: "espacios comunes" },
+  { id: "5", imageName: imagenes.img5, tag: "espacios comunes" },
+  { id: "6", imageName: imagenes.img6, tag: "espacios comunes" },
+  { id: "7", imageName: imagenes.img7, tag: "espacios comunes" },
+  { id: "8", imageName: imagenes.img8, tag: "espacios comunes" },
+  { id: "9", imageName: imagenes.img9, tag: "espacios comunes" },
+  { id: "10", imageName: imagenes.img10, tag: "espacios comunes" },
+  { id: "11", imageName: imagenes.img11, tag: "espacios comunes" },
+  { id: "12", imageName: imagenes.img12, tag: "espacios comunes" },
+  { id: "13", imageName: imagenes.img13, tag: "espacios comunes" },
+  { id: "14", imageName: imagenes.img14, tag: "espacios comunes" },
+  { id: "15", imageName: imagenes.img15, tag: "espacios comunes" },
+  { id: "16", imageName: imagenes.img16, tag: "espacios comunes" },
+  { id: "17", imageName: imagenes.img17, tag: "habitaciones" },
+  { id: "18", imageName: imagenes.img18, tag: "habitaciones" },
+  { id: "19", imageName: imagenes.img19, tag: "habitaciones" },
+  { id: "20", imageName: imagenes.img20, tag: "habitaciones" },
+  { id: "21", imageName: imagenes.img21, tag: "habitaciones" },
+  { id: "22", imageName: imagenes.img22, tag: "habitaciones" },
 ];
 
 const ModalReserva = styled.div`
@@ -77,7 +76,8 @@ const ModalReserva = styled.div`
 
   h3 {
     font-size: 25px;
-    font-family: "Playfair Display";
+    font-family: "Poppins" sans-serif;
+    font-style: italic;
     text-align: center;
     font-weight: 100;
     span {
@@ -104,10 +104,9 @@ const ModalReserva = styled.div`
 const Galeria = () => {
   const [estadoModal, cambiarEstadoModal] = useState(false);
   const [mostrarReserva, setMostrarReserva] = useState(true);
-
+  const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
   const [tag, setTag] = useState("todas");
   const [filteredImages, setFilteredImages] = useState([]);
-  const [data, setData] = useState({ image: "", index: 0 });
 
   useEffect(() => {
     tag === "todas"
@@ -115,28 +114,39 @@ const Galeria = () => {
       : setFilteredImages(images.filter((image) => image.tag === tag));
   }, [tag]);
 
-  const viewImage = (image, index) => {
-    setData({ image, index });
-    console.log(image);
+
+  const handleClickImagen = (id) => {
+    const imagen = filteredImages.find((img) => img.id === id);
+    setImagenSeleccionada(imagen);
   };
-  const imgAction = (action) => {
-    let i = data.index;
-    if (action === "next-image") {
-      setData({ image: images[i + 1], index: i + 1 });
-      console.log(data.index);
+
+  const handleNextImagen = () => {
+    const currentIndex = filteredImages.findIndex(
+      (img) => img.id === imagenSeleccionada.id
+    );
+    let nextIndex = currentIndex + 1;
+    if (nextIndex === filteredImages.length) {
+      nextIndex = 0;
     }
-    if (action === "previus-img") {
-      setData({ image: images[i - 1], index: i - 1 });
+    const nextImagen = filteredImages[nextIndex];
+    setImagenSeleccionada(nextImagen);
+  };
+
+  const handlePreviousImagen = () => {
+    const currentIndex = filteredImages.findIndex(
+      (img) => img.id === imagenSeleccionada.id
+    );
+    let previousIndex = currentIndex - 1;
+    if (previousIndex === -1) {
+      previousIndex = filteredImages.length - 1;
     }
-    if (!action) {
-      setData({ image: "", index: 0 });
-    }
+    const previousImagen = filteredImages[previousIndex];
+    setImagenSeleccionada(previousImagen);
   };
 
   return (
     <>
       <FormData estado={estadoModal} cambiarEstado={cambiarEstadoModal} />
-
       {mostrarReserva && (
         <ModalReserva>
           <button
@@ -163,30 +173,31 @@ const Galeria = () => {
           </motion.button>
         </ModalReserva>
       )}
-      {data.image && (
-        <div className="overlay" key={data.index}>
+
+      {imagenSeleccionada && (
+        <div className="overlay" key={imagenSeleccionada.id}>
           <motion.button
             whileTap={{ scale: 0.8 }}
-            onClick={() => imgAction()}
+            onClick={() => setImagenSeleccionada(null)}
             className="btn-close-overlay"
           >
             <MdClose />
           </motion.button>
           <motion.button
             whileTap={{ scale: 0.8 }}
-            onClick={() => imgAction("previus-img")}
+            onClick={handlePreviousImagen}
             className="btn-prev-overlay"
           >
             <MdNavigateBefore />
           </motion.button>
           <img
-            src={data.image.imageName}
+            src={imagenSeleccionada.imageName}
             alt="hotel n26"
             className="image-overlay"
           />
           <motion.button
             whileTap={{ scale: 0.8 }}
-            onClick={() => imgAction("next-image")}
+            onClick={handleNextImagen}
             className="btn-next-overlay"
           >
             <MdNavigateNext />
@@ -212,26 +223,20 @@ const Galeria = () => {
               tagActive={tag === "habitaciones" ? true : false}
             />
             <TagButton
-              name="exteriores"
+              name="espacios comunes"
               handleSetTag={setTag}
-              tagActive={tag === "exteriores" ? true : false}
-            />
-            <TagButton
-              name="servicios"
-              handleSetTag={setTag}
-              tagActive={tag === "servicios" ? true : false}
+              tagActive={tag === "espacios comunes" ? true : false}
             />
           </div>
           <h1 className="title">Galería</h1>
           <div className="galeria" handleSetTag={setTag}>
             {filteredImages.map((image, index) => (
-              <div className="image-card">
+              <div className="image-card" key={index}>
                 <img
                   src={image.imageName}
                   alt="Hotel N26"
                   className="image"
-                  key={index}
-                  onClick={() => viewImage(image, index)}
+                  onClick={() => handleClickImagen(image.id)}
                 />
               </div>
             ))}

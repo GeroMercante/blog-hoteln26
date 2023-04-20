@@ -166,7 +166,8 @@ const NotAvailable = styled.div`
   .btn-not {
     cursor: pointer;
     color: #fff;
-    font-family: "Playfair Display";
+    font-family: "Poppins", sans-serif;
+    font-style: italic;
     background: #cd9746;
     font-size: 20px;
     padding: 7px 25px;
