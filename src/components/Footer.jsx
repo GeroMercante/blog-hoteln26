@@ -11,7 +11,7 @@ const FooterContain = styled.footer`
   display: block;
 
   @media screen and (max-width: 950px) {
-    height: 75vh;
+    height: 600px;
   }
 `;
 

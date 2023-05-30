@@ -43,6 +43,14 @@ const ButtonWsp = styled.div`
     text-align: center;
     color: #fff;
   }
+  @media screen and (max-width: 700px) {
+    left: 10px;
+    bottom: 10px;
+    z-index: 99;
+    width: 40px;
+    height: 40px;
+    padding: 25px;
+  }
 `;
 
 export default WhatsappButton;

@@ -112,6 +112,37 @@ const BoxContainer = styled.div`
       }
     }
   }
+
+
+  @media screen and (max-width: 1500px) {
+    .description-room .desc {
+      color: #727272;
+      font-size: 19px;
+    }
+    .description-room h2 {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .description-room .flex .grid-4 .list-item p {
+      font-size: 11px;
+    }
+    .description-room .flex .grid-4 .list-item .secador {
+      width: 55px;
+    }
+    .description-room .flex .grid-4 .list-item .aac {
+      width: 100px;
+    }
+    .description-room .flex .grid-4 .list-item .plancha {
+      width: 55px;
+    }
+    .description-room .flex .grid-4 .list-item .wifi {
+      width: 65px;
+    }
+    .description-room .flex .grid-4 .list-item img {
+      width: 65px;
+    }
+  }
+
   @media screen and (max-width: 1150px) {
     .description-room .flex .grid-4 {
       grid-template-columns: repeat(2, 1fr);
@@ -170,6 +201,12 @@ const ContainerRoom = styled.div`
   width: 800px;
   height: 700px;
   padding: 20px;
+
+  @media screen and (max-width: 1500px) {
+    width: 500px;
+    height: 450px;
+    padding: 10px;
+  }
 
   @media screen and (max-width: 800px) {
     width: 350px;

@@ -24,12 +24,10 @@ const images = [
   { id: "14", imageName: imagenes.img14, tag: "espacios comunes" },
   { id: "15", imageName: imagenes.img15, tag: "espacios comunes" },
   { id: "16", imageName: imagenes.img16, tag: "espacios comunes" },
-  { id: "17", imageName: imagenes.img17, tag: "habitaciones" },
-  { id: "18", imageName: imagenes.img18, tag: "habitaciones" },
-  { id: "19", imageName: imagenes.img19, tag: "habitaciones" },
-  { id: "20", imageName: imagenes.img20, tag: "habitaciones" },
-  { id: "21", imageName: imagenes.img21, tag: "habitaciones" },
-  { id: "22", imageName: imagenes.img22, tag: "habitaciones" },
+  { id: "17", imageName: imagenes.img17, tag: "espacios comunes" },
+  { id: "18", imageName: imagenes.img18, tag: "espacios comunes" },
+  { id: "19", imageName: imagenes.img19, tag: "espacios comunes" },
+  { id: "20", imageName: imagenes.img20, tag: "espacios comunes" },
 ];
 
 const ModalReserva = styled.div`
@@ -113,7 +111,6 @@ const Galeria = () => {
       ? setFilteredImages(images)
       : setFilteredImages(images.filter((image) => image.tag === tag));
   }, [tag]);
-
 
   const handleClickImagen = (id) => {
     const imagen = filteredImages.find((img) => img.id === id);
@@ -212,21 +209,6 @@ const Galeria = () => {
       >
         <div className="container" handleSetTag={setTag}>
           <div className="tags">
-            <TagButton
-              name="todas"
-              handleSetTag={setTag}
-              tagActive={tag === "todas" ? true : false}
-            />
-            <TagButton
-              name="habitaciones"
-              handleSetTag={setTag}
-              tagActive={tag === "habitaciones" ? true : false}
-            />
-            <TagButton
-              name="espacios comunes"
-              handleSetTag={setTag}
-              tagActive={tag === "espacios comunes" ? true : false}
-            />
           </div>
           <h1 className="title">Galería</h1>
           <div className="galeria" handleSetTag={setTag}>

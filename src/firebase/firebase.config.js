@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC0akxWKqcbkP6j7yzaJn-l1jf-ndXYLXw",
-  authDomain: "hoteln26-6da1a.firebaseapp.com",
-  projectId: "hoteln26-6da1a",
-  storageBucket: "hoteln26-6da1a.appspot.com",
-  messagingSenderId: "198731603991",
-  appId: "1:198731603991:web:029a9492d827d9c9283c52",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);

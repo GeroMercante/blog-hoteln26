@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+
+// imagen
+import ADG from "../assets/utils/arrowdgold.svg";
+
+// iconos
 import { IoCloseOutline } from "react-icons/io5";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { MdDone } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 
-const Result = ({showResult}) => {
+const Result = ({ showResult }) => {
   return (
     <BoxOk>
       <OkMsg>
         <div className="container-modal-done">
           <div className="logo-close">
             <h5 onClick={() => showResult(false)}>
-              Cerrar <AiOutlineClose className="icon-close"/>
+              Cerrar <AiOutlineClose className="icon-close" />
             </h5>
           </div>
           <div className="logo">
@@ -61,7 +66,12 @@ const FormData = ({ children, estado, cambiarEstado }) => {
     <>
       <div>{result ? <Result showResult={showResult} /> : null}</div>
       {estado && (
-        <BoxModal>
+        <BoxModal
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <ContainModal>
             <div className="title">
               <div>
@@ -85,6 +95,8 @@ const FormData = ({ children, estado, cambiarEstado }) => {
                       placeholder="Nombre"
                       name="nombre_del_usuario"
                       required
+                      minLength="3"
+                      maxLength="55"
                     />
                   </div>
                   <div className="data-form">
@@ -94,6 +106,8 @@ const FormData = ({ children, estado, cambiarEstado }) => {
                       placeholder="Apellido"
                       name="apellido_del_usuario"
                       required
+                      minLength="3"
+                      maxLength="55"
                     />
                   </div>
                 </div>
@@ -105,6 +119,8 @@ const FormData = ({ children, estado, cambiarEstado }) => {
                       placeholder="Email"
                       name="email_del_usuario"
                       required
+                      minLength="8"
+                      maxLength="55"
                     />
                   </div>
                   <div className="data-form">
@@ -114,6 +130,8 @@ const FormData = ({ children, estado, cambiarEstado }) => {
                       placeholder="Celular"
                       name="celular_del_usuario"
                       required
+                      min="10000000"
+                      max="99999999999999999999"
                     />
                   </div>
                 </div>
@@ -141,7 +159,12 @@ const FormData = ({ children, estado, cambiarEstado }) => {
                   </div>
                 </div>
                 <label for="type">Habitación</label>
-                <select name="habitaciones" id="type" required>
+                <select
+                  name="habitaciones"
+                  id="type"
+                  className="select-custom"
+                  required
+                >
                   <option value="Habitación Single" name="habitacion_doble">
                     Single
                   </option>
@@ -176,8 +199,7 @@ const FormData = ({ children, estado, cambiarEstado }) => {
   );
 };
 
-
-const BoxModal = styled.div`
+const BoxModal = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
@@ -198,6 +220,17 @@ const ContainModal = styled.div`
   position: relative;
   border-radius: 16px;
   z-index: 9999;
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(89%) sepia(70%) saturate(705%) hue-rotate(300deg)
+      brightness(95%) contrast(99%);
+  }
+  .select-custom {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(${ADG}) 90% / 9% no-repeat;
+    background-size: 18px;
+  }
   .title {
     width: 100%;
     display: flex;
@@ -210,7 +243,6 @@ const ContainModal = styled.div`
       color: #000;
       font-size: 60px;
       font-family: "Poppins", sans-serif;
-      font-style: italic;
       font-weight: 300;
     }
     button {
@@ -280,7 +312,6 @@ const ContainModal = styled.div`
   label {
     font-size: 24px;
     font-family: "Poppins", sans-serif;
-    font-style: italic;
     font-weight: 300;
   }
   select {
@@ -359,7 +390,6 @@ const ContainModal = styled.div`
     label {
       font-size: 17px;
       font-family: "Poppins", sans-serif;
-      font-style: italic;
       font-weight: 300;
     }
     select {
@@ -418,7 +448,7 @@ const OkMsg = styled.div`
         font-weight: 700;
         gap: 5px;
         cursor: pointer;
-        .icon-close{
+        .icon-close {
           font-size: 30px;
           font-weight: bold;
         }
@@ -446,7 +476,7 @@ const OkMsg = styled.div`
       font-weight: bold;
       text-align: center;
       margin-top: 1.2rem;
-      span{
+      span {
         font-size: 84px;
       }
     }
@@ -457,7 +487,10 @@ const OkMsg = styled.div`
       margin-top: 1.2rem;
     }
   }
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
-
 
 export default FormData;

@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+
 import emailjs from "@emailjs/browser";
+import styled from "styled-components";
+
 import "swiper/css";
 import "swiper/css/bundle";
 import "swiper/swiper-bundle.css";
 import "swiper/css/navigation";
+
 import Single from "../rooms/Single";
 import Dobles from "../rooms/Dobles";
 import Triples from "../rooms/Triples";
 import Cuadruples from "../rooms/Cuadruples";
-import styled from "styled-components";
+
 import { MdDone } from "react-icons/md";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { AiOutlineClose } from "react-icons/ai";
 
 import ADG from "../assets/utils/arrowdgold.svg";
-import MDQ from "../assets/utils/mdq-mar.jpg";
 
 const Habitaciones = () => {
   const [result, showResult] = useState(false);
@@ -94,17 +97,37 @@ const Habitaciones = () => {
     <>
       <div>{result ? <Result showResult={showResult} /> : null}</div>
       {mobileForm && (
-        <MobileFormHab>
-          <button onClick={handleCloseModal} className="cerrar-modal">
-            <h4>
-              Cerrar <AiOutlineClose />
-            </h4>
-          </button>
+        <MobileFormHab
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <form onSubmit={sendEmail}>
             <div className="form-mobile">
+              <button onClick={handleCloseModal} className="cerrar-modal">
+                <h4>
+                  Cerrar <AiOutlineClose />
+                </h4>
+              </button>
               <h1 className="title-mobile">
                 Reservá <br /> tu estadia
               </h1>
+              {room === "selectRoom" && (
+                <p className="type-hab">Selecciona una habitación</p>
+              )}
+              {singleContentVisible && (
+                <p className="type-hab">Habitación Single</p>
+              )}
+              {dobleContentVisible && (
+                <p className="type-hab">Habitación Doble</p>
+              )}
+              {tripleContentVisible && (
+                <p className="type-hab">Habitación Triple</p>
+              )}
+              {cuadrupleContentVisible && (
+                <p className="type-hab">Habitación Cuádruple</p>
+              )}
               <div className="group">
                 <div className="data-form">
                   <label>Nombre</label>
@@ -231,18 +254,7 @@ const Habitaciones = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        {!mobileForm && (
-          <Button whileTap={{ scale: 0.8 }} onClick={handleShowModal}>
-            R <br />
-            E <br />
-            S <br />
-            E <br />
-            R <br />
-            V <br />
-            A <br />
-            R <br />
-          </Button>
-        )}
+        {!mobileForm && <Button onClick={handleShowModal}>RESERVAR</Button>}
 
         <div className="contain-flex-70">
           <div className="grid-2">
@@ -428,52 +440,61 @@ const Habitaciones = () => {
   );
 };
 
-const MobileFormHab = styled.div`
+const MobileFormHab = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url(${MDQ});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-
-  .cerrar-modal {
-    position: absolute;
-    right: 5%;
-    top: 5%;
-    background: transparent;
-    outline: none;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h4 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3px;
-      font-size: 22px;
-      color: #cd9746;
-    }
-  }
 
   .no-visible {
     display: none;
   }
 
   .form-mobile {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    padding: 50px 18px;
+    background: #f2efe6;
+    padding: 60px 20px;
     border-radius: 16px;
     width: 365px;
     position: relative;
+    height: 560px;
+
+    .cerrar-modal {
+      position: absolute;
+      right: 5%;
+      top: 5%;
+      background: transparent;
+      outline: none;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      h4 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+        font-size: 22px;
+        color: #cd9746;
+      }
+    }
+
+    .title-mobile {
+      padding-left: 7px;
+    }
+    .type-hab {
+      margin: 20px 0;
+      padding-left: 7px;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(89%) sepia(70%) saturate(705%) hue-rotate(300deg)
+        brightness(95%) contrast(99%);
+    }
   }
 
   .group {
@@ -487,13 +508,15 @@ const MobileFormHab = styled.div`
     align-items: center;
     justify-content: center;
     input {
-      width: 100%;
+      width: 80%;
       margin-top: 7px;
       margin-bottom: 7px;
       color: #cd9746;
       font-size: 15px;
       outline: none;
+      border-radius: 8px;
       border: none;
+      border: 2px solid #cd9746;
       padding: 10px 20px;
       ::placeholder {
         font-size: 15px;
@@ -525,7 +548,8 @@ const MobileFormHab = styled.div`
     border: #f2efe6;
     background: #cd9746;
     color: #fff;
-    border-radius: 16px;
+    border-radius: 24px;
+    font-weight: bold;
   }
 `;
 
@@ -575,7 +599,7 @@ const Box = styled(motion.div)`
         background: #f2efe6;
         border-radius: 16px;
         padding: 40px 0px;
-        width: 520px;
+        max-width: 475px;
         h2 {
           text-align: left;
           padding-left: 30px;
@@ -649,7 +673,7 @@ const Box = styled(motion.div)`
       }
       .submitButton {
         position: absolute;
-        right: 17%;
+        right: 10%;
         bottom: 5%;
         font-size: 24px;
         padding: 11px 30px;
@@ -688,9 +712,9 @@ const Box = styled(motion.div)`
       background: url(${ADG}) 97% / 0% no-repeat;
       background-size: 20px;
       @media screen and (max-width: 800px) {
-        width: 75%;
-        padding: 11px 1px;
-        font-size: 14px;
+        width: 95%;
+        padding: 18px 18px;
+        font-size: 20px;
       }
     }
   }
@@ -698,11 +722,73 @@ const Box = styled(motion.div)`
     display: none;
   }
   .container {
-    width: 800px;
+    max-width: 800px;
     height: auto;
     background-color: #fff;
     padding: 20px;
     min-height: 200px;
+  }
+
+  @media screen and (max-width: 1500px) {
+    .grid-2 {
+      .contact-room {
+        .container-form-hab {
+          width: 455px;
+          h2 {
+            text-align: left;
+            padding-left: 30px;
+            font-size: 44px;
+            color: #000;
+            line-height: 45px;
+          }
+        }
+        .padding-aling-form {
+          .data-form {
+            display: flex;
+            flex-direction: column;
+            input {
+              font-size: 16px;
+              width: 135px;
+            }
+          }
+          .arrow {
+            width: 35px;
+            position: relative;
+            bottom: -40px;
+            svg {
+              width: 100%;
+              font-size: 30px;
+              color: #cd9746;
+            }
+          }
+        }
+        label {
+          font-size: 17px;
+          font-family: "Poppins", sans-serif;
+          font-weight: 300;
+        }
+        select {
+          border: 2px solid #cd9746;
+          padding: 11px 31px;
+          margin-top: 7px;
+          color: #cd9746;
+          border-radius: 8px;
+          font-size: 20px;
+          background: #f2efe6;
+        }
+        .submitButton {
+          position: absolute;
+          right: 10%;
+          bottom: 5%;
+          font-size: 24px;
+          padding: 11px 30px;
+          border-radius: 999px;
+          color: #fff;
+          background: #cd9746;
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   @media screen and (max-width: 1150px) {
@@ -720,14 +806,14 @@ const Box = styled(motion.div)`
   }
 `;
 
-const Button = styled(motion.button)`
+const Button = styled.button`
   display: none;
 
   @media screen and (max-width: 1150px) {
     display: block;
     position: fixed;
-    left: 0;
-    top: 30%;
+    left: -55px;
+    top: 34%;
     background: #cd9746;
     color: #fff;
     padding: 8px 17px;
@@ -735,11 +821,13 @@ const Button = styled(motion.button)`
     justify-content: center;
     align-items: center;
     font-size: 22px;
+    transform: rotate(-90deg);
   }
 
   @media screen and (max-width: 550px) {
     padding: 5px 11px;
-    font-size: 17px;
+    font-size: 22px;
+    letter-spacing: 1.2px;
   }
 `;
 
@@ -852,6 +940,10 @@ const OkMsg = styled.div`
       font-weight: 100;
       margin-top: 1.2rem;
     }
+  }
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    height: 100%;
   }
 `;
 

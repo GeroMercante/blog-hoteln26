@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { db } from "../firebase/firebase.config";
+import { motion } from "framer-motion";
 
 import Logo from "../assets/log/n26.png";
 import OWl1 from "../assets/utils/OW-1line.svg";
+import OWl from "../assets/utils/OB2l.svg";
 
 import {
   // AiOutlineLinkedin,
@@ -11,12 +15,7 @@ import {
   AiOutlineInstagram,
   AiOutlineClose,
 } from "react-icons/ai";
-
-import OWl from "../assets/utils/OB2l.svg";
-
 import { HiBars3 } from "react-icons/hi2";
-import { db } from "../firebase/firebase.config";
-import { useSelector } from "react-redux";
 
 const Container = styled.div`
   .ola-border {
@@ -248,7 +247,8 @@ const Container = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
+    right: 0;
+    height: 100vh;
     width: 100%;
     z-index: 9999;
     display: flex;
@@ -272,7 +272,6 @@ const Container = styled.div`
       height: 100px;
       left: -100px;
       z-index: 2;
-      /* transform: translateZ(180deg); */
     }
 
     .close-navbar {
@@ -296,7 +295,7 @@ const Container = styled.div`
 `;
 
 const NavBar = () => {
-  const novedades = useSelector(state => state.novedades);
+  const novedades = useSelector((state) => state.novedades);
   const [isNovedades, setIsNovedades] = useState(novedades);
   const [verNovedades, setVerNovedades] = useState(false);
   const [responsiveNav, setResponsiveNav] = useState(false);
@@ -335,7 +334,13 @@ const NavBar = () => {
     <>
       <Container>
         {responsiveNav && (
-          <div className="box-nav">
+          <motion.div
+            className="box-nav"
+            initial={{ top: "-1000px" }}
+            animate={{ top: "0" }}
+            exit={{ top: "-400px" }}
+            transition={{ duration: 0.8 }}
+          >
             <img src={OWl} alt="ola n26" className="ola-l-nav" />
             <img src={OWl} alt="ola n26" className="ola-r-nav" />
             <ul className="nav-responsive">
@@ -462,7 +467,7 @@ const NavBar = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </motion.div>
         )}
         <header className="header">
           <div className="social-media">

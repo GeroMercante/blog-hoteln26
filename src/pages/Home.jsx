@@ -1,23 +1,32 @@
+// React - Router - Styles
 import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
+// Swiper Slide
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/bundle";
 import "swiper/css/navigation";
-import { Autoplay, Navigation, Pagination } from "swiper";
-import { motion } from "framer-motion";
-import { IoIosArrowForward } from "react-icons/io";
 
+// external components
+import FormData from "../components/FormData";
+
+// assets - banner
 import imgh1 from "../assets/home/mdq.png";
 import imgh2 from "../assets/home/habitacion.png";
 import imgh3 from "../assets/home/desayuno.png";
 import imgh4 from "../assets/home/patio.png";
 import imgh5 from "../assets/home/recepcion.png";
 
+// assets - utils
 import OG from "../assets/utils/OG.svg";
 import OW from "../assets/utils/OW.svg";
+import OB from "../assets/utils/OB.svg";
 
+// assets - icons
 import Icon1 from "../assets/icon/Icono_1.svg";
 import Icon2 from "../assets/icon/Icono_2.svg";
 import Icon3 from "../assets/icon/Icono_3.svg";
@@ -25,9 +34,9 @@ import Icon4 from "../assets/icon/Icono_4.svg";
 import Icon5 from "../assets/icon/Icono_5.svg";
 import Icon6 from "../assets/icon/Icono_6.svg";
 import Icon7 from "../assets/icon/Icono_7.svg";
-import OB from "../assets/utils/OB.svg";
 
-import FormData from "../components/FormData";
+// icons react
+import { IoIosArrowForward } from "react-icons/io";
 
 const Home = () => {
   const [estadoModal, cambiarEstadoModal] = useState(false);
@@ -56,7 +65,7 @@ const Home = () => {
             <Box>
               <div className="text-contain">
                 <div className="text">
-                  <h1>Texto de ejemplo</h1>
+                  <h1>A cuadras del mar</h1>
                 </div>
                 <div className="img-contain">
                   <img src={OW} alt="" />
@@ -76,7 +85,9 @@ const Home = () => {
             <Box>
               <div className="text-contain-2">
                 <div className="text">
-                  <h1>Habitaciones confortables</h1>
+                  <h1>
+                    Habitaciones <br /> confortables
+                  </h1>
                 </div>
                 <div className="img-contain">
                   <img src={OW} alt="" />
@@ -97,7 +108,9 @@ const Home = () => {
             <Box>
               <div className="text-contain-3">
                 <div className="text">
-                  <h1>Desayuno continental</h1>
+                  <h1>
+                    Desayuno <br /> continental
+                  </h1>
                 </div>
                 <div className="img-contain">
                   <img src={OW} alt="" />
@@ -139,7 +152,9 @@ const Home = () => {
             <Box>
               <div className="text-contain-5">
                 <div className="text">
-                  <h1>Atención personalizada</h1>
+                  <h1>
+                    Atención <br /> personalizada
+                  </h1>
                 </div>
                 <div className="img-contain">
                   <img src={OW} alt="" />
@@ -277,12 +292,14 @@ const Box = styled(motion.div)`
     h1 {
       font-size: 90px;
       font-weight: 900;
+      text-transform: uppercase;
       color: #fff;
       font-family: "Cunia", sans-serif;
-      font-style: italic;
+      font-style: bold;
       @media screen and (max-width: 650px) {
-        font-size: 50px;
+        font-size: 40px;
         width: 300px;
+        text-shadow: 1px 2px #000;
       }
     }
   }
@@ -304,12 +321,14 @@ const Box = styled(motion.div)`
     h1 {
       font-size: 90px;
       font-weight: 900;
+      text-transform: uppercase;
       color: #fff;
       font-family: "Cunia", sans-serif;
-      font-style: italic;
+      font-style: bold;
       @media screen and (max-width: 650px) {
-        font-size: 50px;
+        font-size: 30px;
         width: 300px;
+        text-shadow: 1px 2px #000;
       }
     }
   }
@@ -330,14 +349,16 @@ const Box = styled(motion.div)`
     position: relative;
     padding-top: 8rem;
     h1 {
+      text-transform: uppercase;
       font-size: 90px;
       font-weight: 900;
       color: #fff;
       font-family: "Cunia", sans-serif;
-      font-style: italic;
+      font-style: bold;
       @media screen and (max-width: 650px) {
-        font-size: 50px;
+        font-size: 35px;
         width: 300px;
+        text-shadow: 1px 2px #000;
       }
     }
   }
@@ -360,12 +381,14 @@ const Box = styled(motion.div)`
     h1 {
       font-size: 90px;
       font-weight: 900;
+      text-transform: uppercase;
       color: #fff;
       font-family: "Cunia", sans-serif;
-      font-style: italic;
+      font-style: bold;
       @media screen and (max-width: 650px) {
-        font-size: 50px;
+        font-size: 40px;
         width: 300px;
+        text-shadow: 1px 2px #000;
       }
     }
   }
@@ -388,12 +411,14 @@ const Box = styled(motion.div)`
     h1 {
       font-size: 90px;
       font-weight: 900;
+      text-transform: uppercase;
       color: #fff;
       font-family: "Cunia", sans-serif;
-      font-style: italic;
+      font-style: bold;
       @media screen and (max-width: 650px) {
-        font-size: 50px;
+        font-size: 30px;
         width: 300px;
+        text-shadow: 1px 2px #000;
       }
     }
   }
@@ -420,7 +445,7 @@ const Servicios = styled.div`
     height: 120vh;
   }
   @media screen and (max-width: 650px) {
-    height: 140vh;
+    height: 950px;
   }
   .svg-ola-left {
     position: absolute;
@@ -574,7 +599,7 @@ const Servicios = styled.div`
     @media screen and (max-width: 650px) {
       position: relative;
       font-size: 16px;
-      bottom: -2rem;
+      bottom: 0em;
     }
   }
 `;

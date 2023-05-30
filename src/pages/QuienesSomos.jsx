@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { IoCloseOutline } from "react-icons/io5";
-import Header from "../assets/home/mdq.png";
-import OlasGold from "../assets/utils/OG.svg";
-import PruebaIma from "../assets/galeria/07.jpg";
-import OB from "../assets/utils/OB2l.svg";
-import FormData from "../components/FormData";
+
+// slide
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper";
+
+// componentes
+import FormData from "../components/FormData";
+
+// imagenes
+import Header from "../assets/home/mdq.png";
+import OlasGold from "../assets/utils/OG.svg";
+import PruebaIma from "../assets/galeria/16.png";
+import OB from "../assets/utils/OB2l.svg";
+
+// iconos
+import { IoCloseOutline } from "react-icons/io5";
+
 
 const Box = styled(motion.div)`
   position: relative;
@@ -81,6 +90,7 @@ const Box = styled(motion.div)`
       img {
         width: 500px;
         height: 410px;
+        object-fit: cover;
         @media screen and (max-width: 960px) {
           width: 300px;
           height: 300px;
@@ -111,7 +121,7 @@ const Box = styled(motion.div)`
           text-align: center;
         }
       }
-      @media screen and (max-width: 500px) {
+      @media screen and (max-width: 600px) {
         h3 {
           text-align: center;
           font-size: 40px;
@@ -126,7 +136,7 @@ const Box = styled(motion.div)`
     }
     @media screen and (max-width: 1420px) {
       width: 100%;
-      height: 90vh;
+      height: auto;
       justify-content: flex-start;
       align-items: center;
       flex-direction: column;
@@ -143,10 +153,9 @@ const Box = styled(motion.div)`
     text-align: center;
     height: 110vh;
     @media screen and (max-width: 500px) {
-      justify-content: flex-end;
+      justify-content: center;
       gap: 5rem;
-      margin-top: 12rem;
-      height: 150vh;
+      height: 120vh;
       margin-bottom: 8rem;
     }
     .subtitle {
@@ -167,10 +176,12 @@ const Box = styled(motion.div)`
       @media screen and (max-width: 500px) {
         h2 {
           font-size: 30px;
+          margin-bottom: 0;
         }
         p {
-          font-size: 20px;
+          font-size: 16px;
           width: 335px;
+          margin: 5px 0;
         }
       }
     }
@@ -224,6 +235,26 @@ const Box = styled(motion.div)`
     @media screen and (max-width: 1080px) {
       display: none;
     }
+    @media screen and (max-width: 500px) {
+      display: block;
+      p {
+        font-size: 16px;
+        width: fit-content;
+        text-align: center;
+      }
+      .swiper-slide .swiper-slide-active {
+        width: 100%;
+      }
+      .swiper-slide {
+        justify-content: flex-start;
+      }
+      .swiper-button-next:after {
+        display: none;
+      }
+      .swiper-button-prev:after {
+        display: none;
+      }
+    }
   }
 
   .swiper-slide {
@@ -249,6 +280,11 @@ const Box = styled(motion.div)`
   @media screen and (max-width: 1080px) {
     .swiper-title {
       display: none;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .swiper-title {
+      display: block;
     }
   }
 `;
@@ -377,19 +413,11 @@ const QuienesSomos = () => {
           <div className="title-qs">
             <h3>Nuestro Hotel</h3>
             <p>
-              El hotel N26 es un ícono de Mar del Plata, que sin perder <br />{" "}
-              su estilo clásico, asombra con su moderna renovación <br />y con
-              un fuerte compromiso con la cultura.
-            </p>
-            <p>
-              Sus inslataciones reciben al visitante con elegancia y <br />{" "}
-              confort propios de un hotel con estilo e historia. La puesta{" "}
-              <br /> en valor de sus instalaciones originales permite disfrutar{" "}
-              <br /> de servicios de calidad en un ambiente con carácter.
-            </p>
-            <p>
-              Viva todo el año la experiencia de un hotel único, con <br />{" "}
-              historia, moderno y elegante.
+              El hotel N26 se encuentra en el corazón gastronómico y comercial
+              de Mar del Plata. Decorado con un estilo clásico y a la vez
+              moderno, crean un ambiente elegante y confortable para brindar un
+              servicio de calidad al huésped. Viva todo el año la experiencia de
+              un hotel único por su ubicación, su diseño y confort.
             </p>
           </div>
         </div>
@@ -400,7 +428,8 @@ const QuienesSomos = () => {
               Ofrecer un servicio de calidad y confort, mediante la Mejora
               Continua de Procesos, alineados a nuestros valores, <br /> creando
               con ello la satifacción de afiliados y clientes. Darnos a conocer
-              por nuestros servicios y atención <br /> única en nuestra
+              por nuestros servicios y atención única.
+              <br />
             </p>
           </div>
           <div className="subtitle">
@@ -422,7 +451,7 @@ const QuienesSomos = () => {
               slidesPerView={1}
               autoplay={{
                 delay: 5500,
-                disableOnInteraction: true,
+                disableOnInteraction: false,
               }}
               loop={true}
               className="mySwiper"
