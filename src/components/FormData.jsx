@@ -158,7 +158,7 @@ const FormData = ({ children, estado, cambiarEstado }) => {
                     />
                   </div>
                 </div>
-                <label for="type">Habitación</label>
+                <label htmlFor="type">Habitación</label>
                 <select
                   name="habitaciones"
                   id="type"

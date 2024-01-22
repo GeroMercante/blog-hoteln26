@@ -14,12 +14,15 @@ import {
   Login,
   Registro,
   Novedades,
+  NovedadesId
 } from "../pages";
+
 import {
   LOGIN,
   REFRESH_PUBLICACIONES,
   REFRESH_PUBLICACIONES_FAIL,
 } from "../redux/types";
+
 import GlobalStyles from "../styles/GlobalStyles";
 import AdminRoute from "./AdminRoute";
 import styled from "styled-components";
@@ -103,6 +106,7 @@ const AppRoutes = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/novedades" element={<Novedades />} />
+          <Route path="/novedades/:back_url" element={<NovedadesId />} />
           {/* Rutas protegidas */}
           <Route path="/admin" element={<AdminRoute />}>
             <Route path="/admin" element={<Admin />} />

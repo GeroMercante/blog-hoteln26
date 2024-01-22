@@ -216,65 +216,63 @@ const ContainerRoom = styled.div`
 
 const Dobles = () => {
   return (
-    <>
-      <BoxContainer>
-        <div className="title-box">
-          <h1>Habitación Doble</h1>
-          <img src={OG} alt="" />
-        </div>
-        <ContainerRoom>
-          <ProductImagesSlider images={doblesImages} />
-        </ContainerRoom>
-        <div className="description-room">
-          <h2>Detalle de la habitación</h2>
-          <p className="desc">
-            Con camas singles o matrimoniales con vista exterior, Wi Fi, TV LED
-            32" fútbol codificado, aire acondicionado, minirefrigerador y
-            calefacción por radiador.
-          </p>
-          <div className="services-g">
-            <h2>Servicios generales</h2>
-            <div className="flex">
-              <div className="grid-4">
-                <div className="list-item">
-                  <img src={AA} alt="Aire acondicionado" className="aac" />
-                  <p>Aire acondicionado</p>
-                </div>
-                <div className="list-item">
-                  <img src={CS} alt="Caja de seguridad" />
-                  <p>Caja de seguridad</p>
-                </div>
-                <div className="list-item">
-                  <img src={TV} alt="Smart TV 32" />
-                  <p>Smart TV 32"</p>
-                </div>
-                <div className="list-item">
-                  <img src={CU} alt="Cuna" />
-                  <p>Cuna</p>
-                </div>
+    <BoxContainer>
+      <div className="title-box">
+        <h1>Habitación Doble</h1>
+        <img src={OG} alt="" />
+      </div>
+      <ContainerRoom>
+        <ProductImagesSlider images={doblesImages} />
+      </ContainerRoom>
+      <div className="description-room">
+        <h2>Detalle de la habitación</h2>
+        <p className="desc">
+          Con camas singles o matrimoniales con vista exterior, Wi Fi, TV LED
+          32" fútbol codificado, aire acondicionado, minirefrigerador y
+          calefacción por radiador.
+        </p>
+        <div className="services-g">
+          <h2>Servicios generales</h2>
+          <div className="flex">
+            <div className="grid-4">
+              <div className="list-item">
+                <img src={AA} alt="Aire acondicionado" className="aac" />
+                <p>Aire acondicionado</p>
+              </div>
+              <div className="list-item">
+                <img src={CS} alt="Caja de seguridad" />
+                <p>Caja de seguridad</p>
+              </div>
+              <div className="list-item">
+                <img src={TV} alt="Smart TV 32" />
+                <p>Smart TV 32"</p>
+              </div>
+              <div className="list-item">
+                <img src={CU} alt="Cuna" />
+                <p>Cuna</p>
+              </div>
 
-                <div className="list-item">
-                  <img src={SP} alt="Secador de pelo" class="secador" />
-                  <p>Secador de pelo</p>
-                </div>
-                <div className="list-item">
-                  <img src={PL} alt="Plancha" className="plancha" />
-                  <p>Plancha</p>
-                </div>
-                <div className="list-item">
-                  <img src={WF} alt="Servicio WiFi Gratuito" className="wifi" />
-                  <p>Servicio WiFi</p>
-                </div>
-                <div className="list-item">
-                  <img src={DC} alt="Desayuno continental" />
-                  <p>Desayuno continental</p>
-                </div>
+              <div className="list-item">
+                <img src={SP} alt="Secador de pelo" class="secador" />
+                <p>Secador de pelo</p>
+              </div>
+              <div className="list-item">
+                <img src={PL} alt="Plancha" className="plancha" />
+                <p>Plancha</p>
+              </div>
+              <div className="list-item">
+                <img src={WF} alt="Servicio WiFi Gratuito" className="wifi" />
+                <p>Servicio WiFi</p>
+              </div>
+              <div className="list-item">
+                <img src={DC} alt="Desayuno continental" />
+                <p>Desayuno continental</p>
               </div>
             </div>
           </div>
         </div>
-      </BoxContainer>
-    </>
+      </div>
+    </BoxContainer>
   );
 };
 

@@ -14,15 +14,13 @@ const WhatsappButton = () => {
   };
 
   return (
-    <ButtonWsp>
-      <a href="javascript:void(0)" onClick={handleClick}>
-        <FaWhatsapp />
-      </a>
+    <ButtonWsp onClick={handleClick}>
+      <FaWhatsapp />
     </ButtonWsp>
   );
 };
 
-const ButtonWsp = styled.div`
+const ButtonWsp = styled.button`
   position: fixed;
   left: 40px;
   bottom: 40px;
@@ -35,14 +33,12 @@ const ButtonWsp = styled.div`
   border-radius: 9999px;
   background: #60a363;
   z-index: 9999;
-  a {
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-  }
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 30px;
+  color: #fff;
+
   @media screen and (max-width: 700px) {
     left: 10px;
     bottom: 10px;

@@ -5,11 +5,11 @@
       <path id="Trazado_122" data-name="Trazado 122" d="M124.455,220.045h97.727a1.954,1.954,0,0,0,1.955-1.955V159.455a1.954,1.954,0,0,0-1.955-1.955H124.455a1.955,1.955,0,0,0-1.955,1.955V218.09a1.954,1.954,0,0,0,1.955,1.955Zm1.955-58.636h93.818v54.727H126.409Z" transform="translate(-114.682 -149.682)" fill="#67b066"/>
       <path id="Trazado_124" data-name="Trazado 124" d="M157.5,198.364v11.727h3.909V198.364a1.955,1.955,0,0,1,1.955-1.955h7.818V192.5h-7.818a5.863,5.863,0,0,0-5.863,5.863Z" transform="translate(-141.864 -176.864)" fill="#67b066"/>
     </g>
-    <g id="Rectángulo_59" data-name="Rectángulo 59" transform="translate(1337 1622.5)" fill="#fff" stroke="#67b066" stroke-width="4">
+    <g id="Rectángulo_59" data-name="Rectángulo 59" transform="translate(1337 1622.5)" fill="#fff" stroke="#67b066" strokeWidth="4">
       <rect width="15" height="17" stroke="none"/>
       <rect x="2" y="2" width="11" height="13" fill="none"/>
     </g>
-    <g id="Rectángulo_60" data-name="Rectángulo 60" transform="translate(1319 1633)" fill="#fff" stroke="#67b066" stroke-width="4">
+    <g id="Rectángulo_60" data-name="Rectángulo 60" transform="translate(1319 1633)" fill="#fff" stroke="#67b066" strokeWidth="4">
       <rect width="51" height="11" stroke="none"/>
       <rect x="2" y="2" width="47" height="7" fill="none"/>
     </g>

@@ -51,21 +51,6 @@ const Habitaciones = () => {
     setRoom(e.target.value);
   };
 
-  const handleRoomChange = (e) => {
-    setRoom(e.target.value);
-    if (e.target.value === "single") {
-      setHabitacion("habitacion_single");
-    } else if (e.target.value === "dobles") {
-      setHabitacion("habitacion_doble");
-    } else if (e.target.value === "triple") {
-      setHabitacion("habitacion_triple");
-    } else if (e.target.value === "cuadruple") {
-      setHabitacion("habitacion_cuadruple");
-    } else {
-      setHabitacion("");
-    }
-  };
-
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
@@ -212,28 +197,22 @@ const Habitaciones = () => {
                   </option>
                 )}
                 {room === "dobles" && (
-                  <>
-                    <option value="habitacion_doble" name="habitacion_doble">
-                      Doble
-                    </option>
-                  </>
+                  <option value="habitacion_doble" name="habitacion_doble">
+                    Doble
+                  </option>
                 )}
                 {room === "triple" && (
-                  <>
-                    <option value="habitacion_triple" name="habitacion_triple">
-                      Triple
-                    </option>
-                  </>
+                  <option value="habitacion_triple" name="habitacion_triple">
+                    Triple
+                  </option>
                 )}
                 {room === "cuadruple" && (
-                  <>
-                    <option
-                      value="habitacion_cuadruple"
-                      name="habitacion_cuadruple"
-                    >
-                      Cuádruple
-                    </option>
-                  </>
+                  <option
+                    value="habitacion_cuadruple"
+                    name="habitacion_cuadruple"
+                  >
+                    Cuádruple
+                  </option>
                 )}
               </select>
               <motion.button
@@ -389,34 +368,28 @@ const Habitaciones = () => {
                           </option>
                         )}
                         {room === "dobles" && (
-                          <>
-                            <option
-                              value="habitacion_doble"
-                              name="habitacion_doble"
-                            >
-                              Doble
-                            </option>
-                          </>
+                          <option
+                            value="habitacion_doble"
+                            name="habitacion_doble"
+                          >
+                            Doble
+                          </option>
                         )}
                         {room === "triple" && (
-                          <>
-                            <option
-                              value="habitacion_triple"
-                              name="habitacion_triple"
-                            >
-                              Triple
-                            </option>
-                          </>
+                          <option
+                            value="habitacion_triple"
+                            name="habitacion_triple"
+                          >
+                            Triple
+                          </option>
                         )}
                         {room === "cuadruple" && (
-                          <>
-                            <option
-                              value="habitacion_cuadruple"
-                              name="habitacion_cuadruple"
-                            >
-                              Cuádruple
-                            </option>
-                          </>
+                          <option
+                            value="habitacion_cuadruple"
+                            name="habitacion_cuadruple"
+                          >
+                            Cuádruple
+                          </option>
                         )}
                       </select>
                       <motion.button

@@ -1,15 +1,23 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import styled from "styled-components";
-import { db } from "../../../firebase/firebase.config";
 import { motion } from "framer-motion";
 import { MdDelete } from "react-icons/md";
-import { actions } from "../../../store";
 
-function DataContain() {
+import { db } from "../../../../firebase/firebase.config";
+import { actions } from "../../../../store";
+
+import { Container, DataBase } from "./GetPublicacionesStyles";
+import ModalConfirm from "../../../../components/modals/ModalConfirm";
+import { Loader } from "../../../../assets/utils/UtilsSvg";
+
+const GetPublicaciones = () => {
   const [novedades, setNovedades] = useState([]);
+  const [loading, setIsLoading] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
 
   useEffect(() => {
+    setIsLoading(true);
     const obtenerNovedades = async () => {
       const novedadesRef = db.collection("novedades");
       const snapshot = await novedadesRef.get();
@@ -18,20 +26,44 @@ function DataContain() {
         ...doc.data(),
       }));
       setNovedades(nuevasNovedades);
+      setIsLoading(false);
     };
     obtenerNovedades();
   }, []);
 
-  const handleDeleteNovedad = async (novedadId) => {
-    try {
-      const novedadRef = db.collection("novedades").doc(novedadId);
-      await novedadRef.delete();
-      setNovedades(novedades.filter((n) => n.id !== novedadId));
-      toast.success("Articulo eliminado con éxito");
-      actions.novedades.refreshPublicaciones();
-    } catch (error) {
-      console.error("Error al eliminar la novedad: ", error);
-      toast.error("Error al eliminar articulo");
+  const handleDeleteNews = (id, imageURL) => {
+    setModalData({ id, imageURL });
+    setModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setModalOpen(false);
+    setModalData(null);
+  };
+
+
+  const handleConfirm = async () => {
+    setIsLoading(true);
+    if (modalData) {
+      try {
+        const { id } = modalData;
+        const novedadRef = db.collection("novedades").doc(id);
+        await novedadRef.delete();
+        setNovedades(novedades.filter((n) => n.id !== id));
+        toast.success("Articulo eliminado con éxito");
+        actions.novedades.refreshPublicaciones();
+      } catch (error) {
+        console.error("Error al eliminar la novedad: ", error);
+        toast.error("Error al eliminar articulo");
+      } finally {
+        setIsLoading(false);
+        setModalOpen(false);
+        setModalData(null);
+      }
+    } else {
+      setIsLoading(false);
+      setModalOpen(false);
+      setModalData(null);
     }
   };
 
@@ -56,7 +88,11 @@ function DataContain() {
 
   return (
     <Container>
-      <DataBase>
+      {
+        loading ? (
+          <Loader />
+        ) : (
+          <DataBase>
         {novedades.map((novedad) => (
           <div key={novedad.id}>
             <div className="logo">
@@ -84,7 +120,7 @@ function DataContain() {
               </select>
               <motion.button
                 whileTap={{ scale: 0.5 }}
-                onClick={() => handleDeleteNovedad(novedad.id)}
+                onClick={() => handleDeleteNews(novedad.id)}
                 className="btn-delete"
               >
                 Eliminar publicación
@@ -94,96 +130,11 @@ function DataContain() {
           </div>
         ))}
       </DataBase>
+        )
+      }
+      <ModalConfirm isOpen={isModalOpen} onCancel={handleCancel} onConfirm={handleConfirm} isLoading={loading} />
     </Container>
   );
-}
+};
 
-const Container = styled.div`
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin-top: 10rem;
-
-  .logo {
-    position: relative;
-    margin: 35px;
-    border: 1px solid #000;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 11px;
-    border-radius: 0 0 8px 8px;
-    h2 {
-      font-size: 20px;
-      text-align: left;
-      left: 2%;
-    }
-    img {
-      width: 250px;
-      height: 200px;
-      object-fit: cover;
-    }
-    .btn-delete {
-      color: #fff;
-      background: #f00;
-      padding: 7px 11px;
-      display: flex;
-      margin-top: 1rem;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      outline: none;
-      font-size: 17px;
-      border: 1px solid #000;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  }
-`;
-
-const DataBase = styled.div`
-  width: 80%;
-  height: auto;
-  min-height: 50vh;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-
-  .alter-v {
-    margin-top: 11px;
-  }
-
-  .habilitado {
-    width: 170px;
-    padding: 4px 7px;
-    font-size: 19px;
-  }
-
-  label {
-    color: #fff;
-  }
-
-  .novedadV {
-    position: absolute;
-    top: -22px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    padding: 11px;
-    border-radius: 8px 8px 0 0;
-    font-size: 15px;
-  }
-
-  .visible {
-    background: green;
-  }
-
-  .novisible {
-    background: grey;
-  }
-`;
-
-export default DataContain;
+export default GetPublicaciones;

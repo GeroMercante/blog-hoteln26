@@ -6,23 +6,21 @@ import AppRoutes from "./routes/routes";
 
 function App() {
   return (
-    <>
-      <Provider store={store}>
-        <AppRoutes />
-        <ToastContainer
-          position="bottom-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
-      </Provider>
-    </>
+    <Provider store={store}>
+      <AppRoutes />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+    </Provider>
   );
 }
 

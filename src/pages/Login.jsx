@@ -24,55 +24,51 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Container>
-        <div className="form-container">
-          {!user && (
-            <>
-              <h1>Iniciar sesión</h1>
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <label htmlFor="password">Contraseña</label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <motion.button type="submit" whileTap={{ scale: 0.8 }}>
-                  Iniciar sesión
-                </motion.button>
-                <div className="line"></div>
-              </form>
-              <p className="redirect">
-                ¿No tienes una cuenta? <Link to="/registro">Registrarse</Link>
-              </p>
-            </>
-          )}
-          {user && (
-            <>
-              <div className="user-login">
-                <h3>Sesión iniciada con éxito</h3>
-                {isAdmin && (
-                  <Link to="/admin" className="btn-admin">
-                    Perfil Administrador
-                  </Link>
-                )}
-                <button className="btn-logout" onClick={handleLogout}>
-                  Cerrar sesión
-                </button>
-              </div>
-            </>
-          )}
-        </div>
-      </Container>
-    </>
+    <Container>
+      <div className="form-container">
+        {!user && (
+          <>
+            <h1>Iniciar sesión</h1>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label htmlFor="password">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <motion.button type="submit" whileTap={{ scale: 0.8 }}>
+                Iniciar sesión
+              </motion.button>
+              <div className="line"></div>
+            </form>
+            <p className="redirect">
+              ¿No tienes una cuenta? <Link to="/registro">Registrarse</Link>
+            </p>
+          </>
+        )}
+        {user && (
+          <div className="user-login">
+            <h3>Sesión iniciada con éxito</h3>
+            {isAdmin && (
+              <Link to="/admin" className="btn-admin">
+                Perfil Administrador
+              </Link>
+            )}
+            <button className="btn-logout" onClick={handleLogout}>
+              Cerrar sesión
+            </button>
+          </div>
+        )}
+      </div>
+    </Container>
   );
 };
 

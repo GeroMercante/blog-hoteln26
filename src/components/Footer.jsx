@@ -83,46 +83,44 @@ const Box = styled.div`
 
 const Footer = () => {
   return (
-    <>
-      <FooterContain>
-        <Flex>
-          <Box>
-            <Link to="/">
-              <article>
-                <img src={Logo} alt="Hotel N26" />
-              </article>
+    <FooterContain>
+      <Flex>
+        <Box>
+          <Link to="/">
+            <article>
+              <img src={Logo} alt="Hotel N26" />
+            </article>
+          </Link>
+        </Box>
+        <Box>
+          <div>
+            <Link to="/contacto">
+              <h2 className="contact-link">Información de contacto</h2>
+              <img src={OW} alt="Ola White by jtineo" />
             </Link>
-          </Box>
-          <Box>
-            <div>
-              <Link to="/contacto">
-                <h2 className="contact-link">Información de contacto</h2>
-                <img src={OW} alt="Ola White by jtineo" />
-              </Link>
-              <br />
-              <div className="flex-contain">
-                <h3>Email</h3>
-                <h3 className="italic">
-                  <a href="mailto:info@hoteln26.com">info@hoteln26.com</a>
-                </h3>
-              </div>
-              <div className="flex-contain">
-                <h3>Teléfono </h3>
-                <h3 className="italic">(+54) 2234-491720</h3>
-              </div>
-            </div>
-          </Box>
-          <Box>
-            <div className="mt">
-              <h3>Ubicación</h3>
+            <br />
+            <div className="flex-contain">
+              <h3>Email</h3>
               <h3 className="italic">
-                Güemes 3041 e/ Alvarado y Avellaneda, Mar del Plata, BsAs, Arg.
+                <a href="mailto:info@hoteln26.com">info@hoteln26.com</a>
               </h3>
             </div>
-          </Box>
-        </Flex>
-      </FooterContain>
-    </>
+            <div className="flex-contain">
+              <h3>Teléfono </h3>
+              <h3 className="italic">(+54) 2234-491720</h3>
+            </div>
+          </div>
+        </Box>
+        <Box>
+          <div className="mt">
+            <h3>Ubicación</h3>
+            <h3 className="italic">
+              Güemes 3041 e/ Alvarado y Avellaneda, Mar del Plata, BsAs, Arg.
+            </h3>
+          </div>
+        </Box>
+      </Flex>
+    </FooterContain>
   );
 };
 
